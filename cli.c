@@ -1,20 +1,10 @@
 #include <stdio.h>
-
-typedef struct work_item_t {
-	double rate;
-	double time;
-} work_item_t;
-
-typedef struct client_t {
-	double total_due;
-	int num_work_item;
-	work_item_t work_item[10];
-} client_t;
+#include "accounting_timer.h"
 
 
 void print_main_menu()
 {
-	printf("1. Add Client\n2. Add Work Item\n3. Start/Stop timer 4. Exit\n");
+	printf("1. Add Client\n2. Add Work Item\n3. Start/Stop timer\n4. Exit\n");
 }
 
 int get_number(int min, int max)
@@ -37,6 +27,14 @@ int main()
 	do {	
 		print_main_menu();
 		choice = get_number(1, 4);
+		switch(choice) {
+			case 1:
+				add_client("Test");
+				break;
+			case 2:
+				print_client_by_num(0);
+				break;
+		}
 	} while (choice != 4);
 
 	return 0;
